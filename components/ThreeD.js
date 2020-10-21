@@ -38,7 +38,7 @@ export default class ThreeD extends React.Component {
           /> */}
 
           <ArtGalleryModel/>
-          <Lights/>
+          {/* <Lights/> */}
       </View>
     );
   }
