@@ -14,17 +14,11 @@ export default class ArtGalleryModel extends React.Component {
           style={{
             transform:[
               {translate: [0 ,-230,40]},
-              {scale:500}
+              {scale:0.5}
             ],
           }}
           source={{
             gltf2:asset('scene.gltf')
-            // obj:asset('ArtGallery.obj'),
-            // mtl:asset('ArtGallery.mtl')
-
-            // obj:asset('untitled.obj'),
-            // mtl:asset('untitled.mtl')
-            // gltf2:asset('untitled.gltf')
 
 
           }}
