@@ -9,9 +9,14 @@ function init(bundle, parent, options = {}) {
     fullScreen: true,
     ...options,
   });
-  // [120,-10,-350]
-  // Render your app content to the default cylinder surface
+
   const customLocation = new Location([0,0,0]);
+  
+  r360.runtime.executor._worker.addEventListener(
+    'message',
+    (e)=>onMessage(e,r360,customLocation)
+  ); 
+
   r360.renderToLocation(
     r360.createRoot('ArtGallery'),
     customLocation
@@ -19,6 +24,12 @@ function init(bundle, parent, options = {}) {
 
   // Load the initial environment
   r360.compositor.setBackground(r360.getAssetURL('360_world.jpg'));
+}
+
+function onMessage(e,r360,customLocation){
+  if(e.data.type === 'newPosition'){
+    customLocation.setWorldPosition(e.data.x,4,e.data.z);
+  }
 }
 
 window.React360 = {init};

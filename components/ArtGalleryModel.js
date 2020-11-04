@@ -13,14 +13,12 @@ export default class ArtGalleryModel extends React.Component {
         <Entity
           style={{
             transform:[
-              {translate: [0 ,-230,40]},
+              {translate: [0 ,-30,40]},
               {scale:0.5}
             ],
           }}
           source={{
             gltf2:asset('scene.gltf')
-
-
           }}
           lit={true}
         />
