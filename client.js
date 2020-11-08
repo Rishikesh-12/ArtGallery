@@ -15,20 +15,24 @@ function init(bundle, parent, options = {}) {
   r360.runtime.executor._worker.addEventListener(
     'message',
     (e)=>onMessage(e,r360,customLocation)
-  ); 
+  );
 
   r360.renderToLocation(
     r360.createRoot('ArtGallery'),
     customLocation
   );
-
+ 
+  const player = r360.compositor.createVideoPlayer('myplayer');
+  player.setSource('./static_assets/cloud1.mp4','2D','mp4','RECT');
+  player.play();
+  player.setLoop(true);
   // Load the initial environment
-  r360.compositor.setBackground(r360.getAssetURL('360_world.jpg'));
+  r360.compositor.setBackgroundVideo('myplayer');
 }
 
 function onMessage(e,r360,customLocation){
   if(e.data.type === 'newPosition'){
-    customLocation.setWorldPosition(e.data.x,4,e.data.z);
+    customLocation.setWorldPosition(e.data.x,0,e.data.z);
   }
 }
 

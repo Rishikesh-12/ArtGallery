@@ -14,9 +14,9 @@ export default class ThreeD extends React.Component {
   constructor(){
     super();
     this.state={
-      xCurPos:0,
+      xCurPos:1,
       zCurPos:0,
-      xTarPos:0,
+      xTarPos:1,
       zTarPos:0,
     };
     this.Lerp = this.Lerp.bind(this);
@@ -27,18 +27,18 @@ export default class ThreeD extends React.Component {
   }
   
   Lerp(){
-    if(Math.abs(this,this.state.xCurPos - this,state.xTarPos) > 0.3)
+    if(Math.abs(this.state.xCurPos - this.state.xTarPos) > 0.3)
     {
       this.setState({
-        xCurPos:this.state.xCurPos * (1 - 0.05) + this.state.xTarPos * 0.05  
+        xCurPos:this.state.xCurPos * (1 - 0.10) + this.state.xTarPos * 0.10  
       });
 
-      postMessage({type:"newPosition", x:this.state.xCurPos,z:this.state.zCurPos});
+       postMessage({type:"newPosition", x:this.state.xCurPos,z:this.state.zCurPos});
     }
-    else if(Math.abs(this,this.state.zCurPos - this,state.zTarPos) > 0.3)
+    else if(Math.abs(this.state.zCurPos - this.state.zTarPos) > 0.3)
     {
       this.setState({
-        xCurPos:this.state.zCurPos * (1 - 0.05) + this.state.zTarPos * 0.05  
+        zCurPos:this.state.zCurPos * (1 - 0.1) + this.state.zTarPos * 0.1  
       });
 
       postMessage({type:"newPosition", x:this.state.xCurPos,z:this.state.zCurPos});
@@ -52,8 +52,8 @@ export default class ThreeD extends React.Component {
 
         <VrButton 
           onClick={()=>{
-            this.state.xTarPos=-0;
-            this.state.zTarPos=-0;
+            this.state.xTarPos=1;
+            this.state.zTarPos=1;
           }}>
           <Entity
             source={{
@@ -63,7 +63,7 @@ export default class ThreeD extends React.Component {
             lit={true}
             style={{
               transform: [
-                {translate: [0,-32,0]},
+                {translate: [-1,-32,-1]},
                 {scale: 3}
               ]
             }}
